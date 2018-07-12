@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -5,15 +6,30 @@ import java.util.LinkedList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ParkingBoyTest {
+//     Car car1=new Car();
+//    @BeforeEach
+//    public void setUp() throws Exception {
+//        ParkingLot parkingLot = mock(ParkingLot.class);
+//       when(parkingLot.park())
+////        when(parkingLot.park(car1)).thenReturn(actualAnswer);
+////        game = new Game(answerGenerator);
+//    }
+
+
 
     @Test
     public void should_let_parkingBoy_park_car_when_car_Park_in_Lot_1(){
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        when(parkingLot.isFull()).thenReturn(false);
+//        when(parkingLot.park(cartemp)).thenReturn()
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(2);
+//        ParkingLot  lot1=new ParkingLot(2);
         ParkingLot lot2=new ParkingLot(2);
-        parkinglist.add(lot1);
+        parkinglist.add(parkingLot);
         parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
@@ -24,9 +40,11 @@ public class ParkingBoyTest {
     @Test
     public void should_not__parkingBoy_park_car_when_parkLot_isfull(){
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(0);
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        when(parkingLot.isFull()).thenReturn(true);
+//        ParkingLot  lot1=new ParkingLot(0);
         ParkingLot lot2=new ParkingLot(0);
-        parkinglist.add(lot1);
+        parkinglist.add(parkingLot);
         parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
@@ -35,7 +53,7 @@ public class ParkingBoyTest {
         catch (ParkingLotFullException exception){
         }
 
-
+//       ver
     }
     @Test
     public void should_get_car_By_boy_when_car_parked(){
@@ -54,6 +72,8 @@ public class ParkingBoyTest {
     @Test
     public void should_can_not_get_car_By_boy_when_car_not_parked(){
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
+//        ParkingLot parkingLot = mock(ParkingLot.class);
+
         ParkingLot  lot1=new ParkingLot(1);
         ParkingLot lot2=new ParkingLot(1);
         parkinglist.add(lot1);
@@ -61,6 +81,7 @@ public class ParkingBoyTest {
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         Receipt receipt=  boy.park(car1);
+//        when(parkingLot.isConstains(receipt)).thenReturn(false);
         assertThat(boy.unPark(receipt), is(car1));
 
     }
@@ -98,7 +119,6 @@ public class ParkingBoyTest {
         parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Receipt receipt=new Receipt();
-
        Car car=     boy.unPark(receipt) ;
        assert car==null;
 
