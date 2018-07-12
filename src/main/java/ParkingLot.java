@@ -34,4 +34,17 @@ public class ParkingLot {
             return false;
         }
     }
+
+    public HashMap<Receipt, Car> getHashMap() {
+        return hashMap;
+    }
+
+
+    public boolean isConstains(Receipt receipt) {
+        return hashMap.containsKey(receipt);
+    }
+
+    public void setHashMap(HashMap<Receipt, Car> hashMap) {
+        this.hashMap = hashMap;
+    }
 }

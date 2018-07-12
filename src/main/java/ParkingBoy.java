@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ParkingBoy {
     LinkedList<ParkingLot> parkingList ;
@@ -7,11 +8,17 @@ public class ParkingBoy {
         this.parkingList=parkinglist;
     }
 
-    public void park(Car car1) {
+    public Receipt park(Car car1) {
         if(parkingList.stream().filter(parkingLot -> !parkingLot.isFull()).count()!=0)
-        parkingList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().get().park(car1);
+     return  parkingList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().get().park(car1);
         else{
             throw new ParkingLotFullException();
         }
+    }
+
+    public  Car unPark(Receipt receipt){
+       Car car=    parkingList.stream().filter(parkingLot -> parkingLot.isConstains(receipt)).collect(Collectors.toList()).get(0).unPark(receipt);
+//        Car car=new Car();
+        return  car ;
     }
 }
