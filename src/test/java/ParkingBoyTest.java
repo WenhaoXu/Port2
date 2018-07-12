@@ -14,6 +14,7 @@ public class ParkingBoyTest {
         ParkingLot  lot1=new ParkingLot(2);
         ParkingLot lot2=new ParkingLot(2);
         parkinglist.add(lot1);
+        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         boy.park(car1);
@@ -26,6 +27,7 @@ public class ParkingBoyTest {
         ParkingLot  lot1=new ParkingLot(0);
         ParkingLot lot2=new ParkingLot(0);
         parkinglist.add(lot1);
+        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         try{boy.park(car1);
@@ -41,6 +43,7 @@ public class ParkingBoyTest {
         ParkingLot  lot1=new ParkingLot(1);
         ParkingLot lot2=new ParkingLot(1);
         parkinglist.add(lot1);
+        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         Receipt receipt=  boy.park(car1);
@@ -54,6 +57,7 @@ public class ParkingBoyTest {
         ParkingLot  lot1=new ParkingLot(1);
         ParkingLot lot2=new ParkingLot(1);
         parkinglist.add(lot1);
+        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         Receipt receipt=  boy.park(car1);
@@ -65,8 +69,41 @@ public class ParkingBoyTest {
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
         ParkingLot  lot1=new ParkingLot(0);
         ParkingLot lot2=new ParkingLot(0);
+        parkinglist.add(lot1);
+        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
         assertThat(boy.isFull(),is(true));
+    }
+
+    @Test
+    public void should_be_order_parking_when_parkBoy_parking_car_one_by_one(){
+        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
+        ParkingLot  lot1=new ParkingLot(1);
+        ParkingLot lot2=new ParkingLot(1);
+        parkinglist.add(lot1);
+        parkinglist.add(lot2);
+        ParkingBoy boy=new ParkingBoy(parkinglist);
+        Car car1=new Car();
+        Receipt receipt=  boy.park(car1);
+        Car car2= lot1.unPark(receipt);
+        assertThat(car2,is(car1));
+    }
+
+    @Test
+    public void should_not_get_car_parking_when_car_is_not_parked(){
+        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
+        ParkingLot  lot1=new ParkingLot(1);
+        ParkingLot lot2=new ParkingLot(1);
+        parkinglist.add(lot1);
+        parkinglist.add(lot2);
+        ParkingBoy boy=new ParkingBoy(parkinglist);
+        Receipt receipt=new Receipt();
+
+       Car car=     boy.unPark(receipt) ;
+       assert car==null;
+
+
+
     }
 
 }

@@ -18,9 +18,16 @@ public class ParkingBoy {
     }
 
     public  Car unPark(Receipt receipt){
+
+        if(parkingList.stream().filter(parkingLot -> parkingLot.isConstains(receipt)).collect(Collectors.toList()).size()!=0){
        Car car=    parkingList.stream().filter(parkingLot -> parkingLot.isConstains(receipt)).collect(Collectors.toList()).get(0).unPark(receipt);
+            return  car ;
+        }
+       else{
+            return null;
+        }
 //        Car car=new Car();
-        return  car ;
+
     }
 
     public Boolean isFull() {
