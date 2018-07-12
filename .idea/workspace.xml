@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="373d8d92-ec24-45b8-82ab-ee26b0bfa9e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParkingBoy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParkingBoy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParkingLot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/parkingBoyParkCar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/PortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PortTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -24,11 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PortTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PortTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PortTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+            <state relative-caret-position="406">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parkingBoyParkCar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/parkingBoyParkCar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -504,9 +514,10 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/Car.java" />
         <option value="$PROJECT_DIR$/src/main/java/Receipt.java" />
-        <option value="$PROJECT_DIR$/src/test/java/PortTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkingLot.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkingBoy.java" />
+        <option value="$PROJECT_DIR$/src/test/java/parkingBoyParkCar.java" />
+        <option value="$PROJECT_DIR$/src/test/java/PortTest.java" />
       </list>
     </option>
   </component>
@@ -589,7 +600,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PortTest.should_get_car_By_boy_when_car_parked">
+  <component name="RunManager" selected="JUnit.parkingBoyParkCar">
     <configuration name="Car" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Car" />
       <module name="Port2_main" />
@@ -597,23 +608,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="PortTest.should_be_false_when_call_isFull_given_parking_lot_is_not_full" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Port2_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PortTest" />
-      <option name="METHOD_NAME" value="should_be_false_when_call_isFull_given_parking_lot_is_not_full" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration name="PortTest.should_get_car_By_boy_when_car_parked" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Port2_test" />
@@ -682,6 +676,23 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="parkingBoyParkCar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Port2_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="parkingBoyParkCar" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -705,19 +716,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.PortTest.should_be_false_when_call_isFull_given_parking_lot_is_not_full" />
       <item itemvalue="Application.Car" />
       <item itemvalue="JUnit.PortTest.should_let_parkingBoy_park_car_when_car_Park_in_Lot_1" />
       <item itemvalue="JUnit.PortTest.should_not__parkingBoy_park_car_when_parkLot_isfull" />
       <item itemvalue="JUnit.PortTest.should_get_car_By_boy_when_car_parked" />
+      <item itemvalue="JUnit.parkingBoyParkCar" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.parkingBoyParkCar" />
         <item itemvalue="JUnit.PortTest.should_get_car_By_boy_when_car_parked" />
         <item itemvalue="JUnit.PortTest.should_let_parkingBoy_park_car_when_car_Park_in_Lot_1" />
         <item itemvalue="JUnit.PortTest.should_not__parkingBoy_park_car_when_parkLot_isfull" />
         <item itemvalue="Application.Car" />
-        <item itemvalue="JUnit.PortTest.should_be_false_when_call_isFull_given_parking_lot_is_not_full" />
       </list>
     </recent_temporary>
   </component>
@@ -735,9 +746,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PortTest_should_park_successfully_given_parking_lot_is_not_full - 2018.07.11 at 16h 32m 12s.xml">
-      <configuration name="PortTest.should_park_successfully_given_parking_lot_is_not_full" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PortTest_should_park_failed_given_parking_lot_is_full - 2018.07.11 at 16h 34m 23s.xml">
       <configuration name="PortTest.should_park_failed_given_parking_lot_is_full" configurationId="JUnit" />
     </history-entry>
@@ -765,6 +773,9 @@
     <history-entry file="PortTest_should_get_car_By_boy_when_car_parked - 2018.07.12 at 11h 37m 23s.xml">
       <configuration name="PortTest.should_get_car_By_boy_when_car_parked" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PortTest_should_get_car_By_boy_when_car_parked - 2018.07.12 at 11h 40m 18s.xml">
+      <configuration name="PortTest.should_get_car_By_boy_when_car_parked" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -778,12 +789,12 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32900432" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25266525" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -955,8 +966,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PortTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        <state relative-caret-position="406">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/parkingBoyParkCar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
