@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class parkingBoyParkCar {
+public class ParkingBoyTest {
 
     @Test
     public void should_let_parkingBoy_park_car_when_car_Park_in_Lot_1(){
@@ -31,8 +31,6 @@ public class parkingBoyParkCar {
         try{boy.park(car1);
             fail("should park successfully");}
         catch (ParkingLotFullException exception){
-
-
         }
 
 
@@ -49,4 +47,26 @@ public class parkingBoyParkCar {
         assertThat(boy.unPark(receipt), is(car1));
 
     }
+
+    @Test
+    public void should_can_not_get_car_By_boy_when_car_not_parked(){
+        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
+        ParkingLot  lot1=new ParkingLot(1);
+        ParkingLot lot2=new ParkingLot(1);
+        parkinglist.add(lot1);
+        ParkingBoy boy=new ParkingBoy(parkinglist);
+        Car car1=new Car();
+        Receipt receipt=  boy.park(car1);
+        assertThat(boy.unPark(receipt), is(car1));
+
+    }
+    @Test
+    public void should_be_true_when_parkLot_is_full(){
+        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
+        ParkingLot  lot1=new ParkingLot(0);
+        ParkingLot lot2=new ParkingLot(0);
+        ParkingBoy boy=new ParkingBoy(parkinglist);
+        assertThat(boy.isFull(),is(true));
+    }
+
 }
