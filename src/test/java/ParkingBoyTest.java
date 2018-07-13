@@ -1,39 +1,32 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
+import org.mockito.verification.VerificationMode;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ParkingBoyTest {
-//     Car car1=new Car();
-//    @BeforeEach
-//    public void setUp() throws Exception {
-//        ParkingLot parkingLot = mock(ParkingLot.class);
-//       when(parkingLot.park())
-////        when(parkingLot.park(car1)).thenReturn(actualAnswer);
-////        game = new Game(answerGenerator);
-//    }
-
-
 
     @Test
     public void should_let_parkingBoy_park_car_when_car_Park_in_Lot_1(){
         ParkingLot parkingLot = mock(ParkingLot.class);
         when(parkingLot.isFull()).thenReturn(false);
-//        when(parkingLot.park(cartemp)).thenReturn()
+
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-//        ParkingLot  lot1=new ParkingLot(2);
-        ParkingLot lot2=new ParkingLot(2);
         parkinglist.add(parkingLot);
-        parkinglist.add(lot2);
+
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         boy.park(car1);
+
 
     }
 
@@ -42,10 +35,10 @@ public class ParkingBoyTest {
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
         ParkingLot parkingLot = mock(ParkingLot.class);
         when(parkingLot.isFull()).thenReturn(true);
-//        ParkingLot  lot1=new ParkingLot(0);
-        ParkingLot lot2=new ParkingLot(0);
+
+
         parkinglist.add(parkingLot);
-        parkinglist.add(lot2);
+
         ParkingBoy boy=new ParkingBoy(parkinglist);
         Car car1=new Car();
         try{boy.park(car1);
@@ -57,14 +50,23 @@ public class ParkingBoyTest {
     }
     @Test
     public void should_get_car_By_boy_when_car_parked(){
-        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(1);
-        ParkingLot lot2=new ParkingLot(1);
-        parkinglist.add(lot1);
-        parkinglist.add(lot2);
-        ParkingBoy boy=new ParkingBoy(parkinglist);
-        Car car1=new Car();
-        Receipt receipt=  boy.park(car1);
+        LinkedList<ParkingLot> parkinglist = new LinkedList<>();
+        ParkingLot parkingLot = mock(ParkingLot.class);
+
+        Car car1 = new Car();
+        Receipt receipt = new Receipt();
+        when(parkingLot.isFull()).thenReturn(false);
+        when(parkingLot.isConstains(receipt)).thenReturn(true);
+        when(parkingLot.unPark(receipt)).thenReturn(car1);
+        parkinglist.add(parkingLot);
+
+        ParkingBoy boy = new ParkingBoy(parkinglist);
+
+
+        boy.park(car1);
+
+        boy.unPark(receipt);
+
         assertThat(boy.unPark(receipt), is(car1));
 
     }
@@ -72,58 +74,55 @@ public class ParkingBoyTest {
     @Test
     public void should_can_not_get_car_By_boy_when_car_not_parked(){
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-//        ParkingLot parkingLot = mock(ParkingLot.class);
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        parkinglist.add(parkingLot);
+        Car car1 = new Car();
+        Receipt receipt = new Receipt();
+        when(parkingLot.isConstains(receipt)).thenReturn(false);
 
-        ParkingLot  lot1=new ParkingLot(1);
-        ParkingLot lot2=new ParkingLot(1);
-        parkinglist.add(lot1);
-        parkinglist.add(lot2);
         ParkingBoy boy=new ParkingBoy(parkinglist);
-        Car car1=new Car();
-        Receipt receipt=  boy.park(car1);
-//        when(parkingLot.isConstains(receipt)).thenReturn(false);
-        assertThat(boy.unPark(receipt), is(car1));
+
+      Car car=  boy.unPark(receipt);
+
+       assertThat(car==null,is(true));
 
     }
     @Test
     public void should_be_true_when_parkLot_is_full(){
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(0);
-        ParkingLot lot2=new ParkingLot(0);
-        parkinglist.add(lot1);
-        parkinglist.add(lot2);
+        ParkingLot parkingLot = mock(ParkingLot.class);
+        when(parkingLot.isFull()).thenReturn(true);
+        parkinglist.add(parkingLot);
+
         ParkingBoy boy=new ParkingBoy(parkinglist);
         assertThat(boy.isFull(),is(true));
     }
 
     @Test
-    public void should_be_order_parking_when_parkBoy_parking_car_one_by_one(){
+    public void should_park_inorder_when_parkingBoy_park_cars() {
+
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(1);
-        ParkingLot lot2=new ParkingLot(1);
-        parkinglist.add(lot1);
-        parkinglist.add(lot2);
-        ParkingBoy boy=new ParkingBoy(parkinglist);
-        Car car1=new Car();
-        Receipt receipt=  boy.park(car1);
-        Car car2= lot1.unPark(receipt);
-        assertThat(car2,is(car1));
+        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingLot parkingLot1 = Mockito.mock(ParkingLot.class);
+        parkinglist.add(parkingLot);
+        parkinglist.add(parkingLot1);
+
+        Mockito.when(parkingLot.isFull()).thenReturn(false, false, true);
+        Mockito.when(parkingLot1.isFull()).thenReturn(false);
+
+        ParkingBoy boy = new ParkingBoy(parkinglist);
+
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+         boy.park(car1);
+         boy.park(car2);
+        boy.park(car3);
+        InOrder inOrder=inOrder(parkingLot,parkingLot1);
+        inOrder.verify(parkingLot).park(car1);
+        inOrder.verify(parkingLot1).park(car3);
+
     }
 
-    @Test
-    public void should_not_get_car_parking_when_car_is_not_parked(){
-        LinkedList<ParkingLot> parkinglist =new LinkedList<>();
-        ParkingLot  lot1=new ParkingLot(1);
-        ParkingLot lot2=new ParkingLot(1);
-        parkinglist.add(lot1);
-        parkinglist.add(lot2);
-        ParkingBoy boy=new ParkingBoy(parkinglist);
-        Receipt receipt=new Receipt();
-       Car car=     boy.unPark(receipt) ;
-       assert car==null;
-
-
-
-    }
 
 }
