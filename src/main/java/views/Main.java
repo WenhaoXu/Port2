@@ -10,6 +10,7 @@ public class Main {
         Injector injector=createInjector(new ParkingLotModule());
         ParkingCarController  controller=injector.getInstance(ParkingCarController.class);
         controller.beginUi();
+        controller.startParkingAndUnpack();
 
 
     }
