@@ -1,12 +1,12 @@
+import core.Car;
+import core.ParkingLot;
+import core.ParkingLotFullException;
+import core.Receipt;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.mock;
 
 public class ParkingLotTest {
     @Test
@@ -15,7 +15,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
 
         try {
-            parkingLot.park(new Car());
+            parkingLot.park(new Car("ex1234"));
         } catch (ParkingLotFullException exception) {
             fail("should park successfully");
         }
@@ -27,7 +27,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(0);
 
         try {
-            parkingLot.park(new Car());
+            parkingLot.park(new Car("ex1234"));
             fail("should park successfully");
         } catch (ParkingLotFullException exception) {
 
@@ -38,7 +38,7 @@ public class ParkingLotTest {
     public void should_get_specific_car_when_call_unPark_given_receipt_is_right() {
         ParkingLot parkingLot = new ParkingLot(1);
 
-        Car theCar = new Car();
+        Car theCar = new Car("ex1234");
         Receipt receipt = parkingLot.park(theCar);
 
         assertThat(parkingLot.unPark(receipt), is(theCar));

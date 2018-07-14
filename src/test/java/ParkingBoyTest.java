@@ -1,11 +1,8 @@
-import org.junit.jupiter.api.BeforeEach;
+import core.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
-import org.mockito.verification.VerificationMode;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -24,7 +21,7 @@ public class ParkingBoyTest {
         parkinglist.add(parkingLot);
 
         ParkingBoy boy=new ParkingBoy(parkinglist);
-        Car car1=new Car();
+        Car car1=new Car("ex1234");
         boy.park(car1);
 
 
@@ -40,7 +37,7 @@ public class ParkingBoyTest {
         parkinglist.add(parkingLot);
 
         ParkingBoy boy=new ParkingBoy(parkinglist);
-        Car car1=new Car();
+        Car car1=new Car("ex1234");
         try{boy.park(car1);
             fail("should park successfully");}
         catch (ParkingLotFullException exception){
@@ -53,7 +50,7 @@ public class ParkingBoyTest {
         LinkedList<ParkingLot> parkinglist = new LinkedList<>();
         ParkingLot parkingLot = mock(ParkingLot.class);
 
-        Car car1 = new Car();
+        Car car1 = new Car("ex1234");
         Receipt receipt = new Receipt();
         when(parkingLot.isFull()).thenReturn(false);
         when(parkingLot.isConstains(receipt)).thenReturn(true);
@@ -76,7 +73,7 @@ public class ParkingBoyTest {
         LinkedList<ParkingLot> parkinglist =new LinkedList<>();
         ParkingLot parkingLot = mock(ParkingLot.class);
         parkinglist.add(parkingLot);
-        Car car1 = new Car();
+        Car car1 = new Car("ex1234");
         Receipt receipt = new Receipt();
         when(parkingLot.isConstains(receipt)).thenReturn(false);
 
@@ -112,9 +109,9 @@ public class ParkingBoyTest {
 
         ParkingBoy boy = new ParkingBoy(parkinglist);
 
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
+        Car car1 = new Car("ex1234");
+        Car car2 = new Car("ex1234");
+        Car car3 = new Car("ex1234");
          boy.park(car1);
          boy.park(car2);
         boy.park(car3);

@@ -1,10 +1,11 @@
+package core;
+
 import java.util.LinkedList;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
 
-    LinkedList<ParkingLot> parkingList;
+   private static   LinkedList<ParkingLot> parkingList;
 
     public ParkingBoy(LinkedList<ParkingLot> parkinglist) {
         this.parkingList = parkinglist;
@@ -26,11 +27,19 @@ public class ParkingBoy {
         } else {
             return null;
         }
-//        Car car=new Car();
-
     }
 
     public Boolean isFull() {
         return parkingList.stream().filter(parkingLot -> !parkingLot.isFull()).count() == 0;
     }
+
+    public  static  ParkingBoy createParkingBoy(int Boysize,int lotsize){
+        LinkedList<ParkingLot>  Lotlist=new LinkedList<>();
+        for(int i=0;i<Boysize;i++){
+            Lotlist.add(new ParkingLot(lotsize));
+        }
+        return   new ParkingBoy(Lotlist);
+    }
+
+
 }

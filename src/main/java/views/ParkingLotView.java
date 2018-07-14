@@ -23,4 +23,31 @@ public class ParkingLotView {
     public void getErrorView() {
         System.out.println("非法指令，请查证后再输");
     }
+
+    public void getLotIsFullView() {
+        System.out.println("车已停满，请晚点再来");
+        showBegin();
+    }
+
+    public void getParkingCarView(){
+        System.out.println("请输入车牌号:");
+    }
+
+    public void getReceptView(String ticket){
+        System.out.println(" 停车成功，您的小票是：\n"+ticket);
+    }
+
+   public void getsShowIdview(){
+       System.out.println("请输入小票号:");
+   }
+
+    public void getCarIsNonexistent() {
+        System.out.println("非法小票，无法取出车，请查证后再输");
+    }
+
+    public void getCarView(String id) {
+
+        System.out.println("车已取出，您的车牌号是:");
+        System.out.println(id);
+    }
 }
