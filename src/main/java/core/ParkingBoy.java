@@ -33,13 +33,18 @@ public class ParkingBoy {
         return parkingList.stream().filter(parkingLot -> !parkingLot.isFull()).count() == 0;
     }
 
-    public  static  ParkingBoy createParkingBoy(int Boysize,int lotsize){
-        LinkedList<ParkingLot>  Lotlist=new LinkedList<>();
-        for(int i=0;i<Boysize;i++){
-            Lotlist.add(new ParkingLot(lotsize));
-        }
-        return   new ParkingBoy(Lotlist);
+    public static LinkedList<ParkingLot> getParkingList() {
+        return parkingList;
     }
+
+
+    //    public  static  ParkingBoy createParkingBoy(int Boysize,int lotsize){
+//        LinkedList<ParkingLot>  Lotlist=new LinkedList<>();
+//        for(int i=0;i<Boysize;i++){
+//            Lotlist.add(new ParkingLot(lotsize));
+//        }
+//        return   new ParkingBoy(Lotlist);
+//    }
 
 
 }

@@ -12,7 +12,7 @@ public class ParkingLotTest {
     @Test
     public void should_park_successfully_given_parking_lot_is_not_full() {
 
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot(1,"asd","001");
 
         try {
             parkingLot.park(new Car("ex1234"));
@@ -24,7 +24,7 @@ public class ParkingLotTest {
 
     @Test
     public void should_park_failed_given_parking_lot_is_full() {
-        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLot =new ParkingLot(1,"asd","001");
 
         try {
             parkingLot.park(new Car("ex1234"));
@@ -36,8 +36,7 @@ public class ParkingLotTest {
 
     @Test
     public void should_get_specific_car_when_call_unPark_given_receipt_is_right() {
-        ParkingLot parkingLot = new ParkingLot(1);
-
+        ParkingLot parkingLot = new ParkingLot(1,"asd","001");
         Car theCar = new Car("ex1234");
         Receipt receipt = parkingLot.park(theCar);
 
@@ -47,14 +46,14 @@ public class ParkingLotTest {
 
     @Test
     public void should_be_true_when_call_isFull_given_parking_lot_is_full() {
-        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLot = new ParkingLot(1,"asd","001");
 
         assertThat(parkingLot.isFull(), is(true));
     }
 
     @Test
     public void should_be_false_when_call_isFull_given_parking_lot_is_not_full() {
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot(1,"asd","001");
 
         assertThat(parkingLot.isFull(), is(false));
     }
