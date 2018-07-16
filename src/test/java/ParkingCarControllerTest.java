@@ -12,25 +12,6 @@ public class ParkingCarControllerTest {
         ParkingCarController controller=injector.getInstance(ParkingCarController.class);
         controller.beginUi();
     }
-    @Test
-    public void should_return_parkUI_when_input_1(){
-        Injector injector=createInjector(new ParkingLotModule());
-        ParkingCarController controller=injector.getInstance(ParkingCarController.class);
-        controller.startParkingAndUnpack(1);
-
-    }
-    @Test
-    public void should_return_UnparkUI_when_input_2(){
-        Injector injector=createInjector(new ParkingLotModule());
-        ParkingCarController controller=injector.getInstance(ParkingCarController.class);
-        controller.startParkingAndUnpack(2);
-    }
-    @Test
-    public void should_return_ErrorUi_when_input_3(){
-        Injector injector=createInjector(new ParkingLotModule());
-        ParkingCarController controller=injector.getInstance(ParkingCarController.class);
-        controller.startParkingAndUnpack(3);
-    }
 
 
 

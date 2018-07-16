@@ -1,17 +1,24 @@
 package views;
 
-import com.google.inject.Injector;
 import controllers.ParkingCarController;
-
-import static com.google.inject.Guice.createInjector;
+import core.ParkingBoy;
+import core.Request;
 
 public class Main {
     public static void main(String[] args) {
-        Injector injector=createInjector(new ParkingLotModule());
-        ParkingCarController  controller=injector.getInstance(ParkingCarController.class);
-        controller.beginUi();
-        controller.startParkingAndUnpack(controller.getInputNumber());
+        String currentPage="main";
+        ParkingBoy boy= ParkingBoy.createParkingBoy(3,2);
+        ParkingCarController controller=new ParkingCarController(new ParkingLotView(),boy);
+        Route route=new Route(controller,currentPage);
+        route.formatUI();
+        Request request=new Request();
 
-
+//        route.
+        while (true){
+            request.setInputId();
+             route.start(request);
+        }
     }
+
+
 }
